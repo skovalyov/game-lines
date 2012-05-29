@@ -269,7 +269,7 @@
         onAnimationEnd = function() {
           return this.image.removeClass("circle-fade-in");
         };
-        this.image.one("webkitAnimationEnd mozAnimationEnd", $.proxy(onAnimationEnd, this));
+        this.image.one("webkitAnimationEnd animationend", $.proxy(onAnimationEnd, this));
         return this.image.addClass("circle-fade-in");
       }
     };
@@ -284,7 +284,7 @@
         return this.image.removeClass();
       };
       if (animate) {
-        this.image.one("webkitAnimationEnd mozAnimationEnd", $.proxy(onAnimationEnd, this));
+        this.image.one("webkitAnimationEnd animationend", $.proxy(onAnimationEnd, this));
         return this.image.addClass("circle-fade-out");
       } else {
         return onAnimationEnd.apply(this);

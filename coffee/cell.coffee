@@ -14,7 +14,7 @@ class Cell
 		if animate
 			onAnimationEnd = () ->
 				@image.removeClass "circle-fade-in"
-			@image.one "webkitAnimationEnd mozAnimationEnd", $.proxy onAnimationEnd, this
+			@image.one "webkitAnimationEnd animationend", $.proxy onAnimationEnd, this
 			@image.addClass "circle-fade-in"
 
 	hide : (animate = false) ->
@@ -22,7 +22,7 @@ class Cell
 		onAnimationEnd = () ->
 			@image.removeClass()
 		if animate
-			@image.one "webkitAnimationEnd mozAnimationEnd", $.proxy onAnimationEnd, this
+			@image.one "webkitAnimationEnd animationend", $.proxy onAnimationEnd, this
 			@image.addClass "circle-fade-out"
 		else
 			onAnimationEnd.apply @
