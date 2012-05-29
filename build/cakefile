@@ -1,0 +1,14 @@
+{exec} = require 'child_process'
+
+onExec = (error, stdout, stderr) ->
+	console.log stdout if stdout?
+	console.log stderr if stderr?
+	console.log error if error?
+
+task "buildStylus", "Build Stylus", () ->
+	console.log "Compiling Stylus..."
+	cp = exec "stylus.cmd ../stylus -o ../css", onExec
+
+task "buildCoffeeScript", "Build CoffeeScript", () ->
+	console.log "Compiling CoffeeScript..."
+	cp = exec "coffee.cmd -cj ../js/game.js ../coffee", onExec
