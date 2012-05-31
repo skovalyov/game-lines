@@ -15,7 +15,8 @@ class Board
 			for j in [0..@w - 1]
 				cell = new Cell @, i, j
 				cellElement = cell.getElement()
-				cellElement.click $.proxy @onCellClick, cell
+				cellElement.click cell, (event) =>
+					@selectCell event.data
 				rowElement.append cellElement
 				@cells[i].push cell
 				@emptyCells.push cell
@@ -25,11 +26,6 @@ class Board
 	getElement : () ->
 		@element
 		
-	onCellClick : () ->
-		# Here the cell is the context.
-
-		@board.selectCell @ 
-	
 	addNewCircles : () ->
 		i = 0
 		# Add the predefined number of new circles.
@@ -98,7 +94,9 @@ class Board
 		# Add the clicked cell to the empty cells array as the circle is moving out of it.
 		@emptyCells.push @movableCell
 		# Initialize step by step move.
-		@moveInterval = setInterval $.proxy(@makeNextCellMove, @), 100
+		@moveInterval = setInterval =>
+			@makeNextCellMove()
+		, 100
 	
 	makeNextCellMove : () ->
 		movableCellColor = @movableCell.color

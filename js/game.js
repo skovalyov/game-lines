@@ -8,7 +8,8 @@
     COLORS = ["circle-red", "circle-green", "circle-blue", "circle-yellow"];
 
     function Board(scoreboard, w, h, newCirclesNum, lineLength) {
-      var cell, cellElement, i, j, rowElement, _i, _j, _ref, _ref1;
+      var cell, cellElement, i, j, rowElement, _i, _j, _ref, _ref1,
+        _this = this;
       this.scoreboard = scoreboard;
       this.w = w != null ? w : 6;
       this.h = h != null ? h : 6;
@@ -25,7 +26,9 @@
         for (j = _j = 0, _ref1 = this.w - 1; 0 <= _ref1 ? _j <= _ref1 : _j >= _ref1; j = 0 <= _ref1 ? ++_j : --_j) {
           cell = new Cell(this, i, j);
           cellElement = cell.getElement();
-          cellElement.click($.proxy(this.onCellClick, cell));
+          cellElement.click(cell, function(event) {
+            return _this.selectCell(event.data);
+          });
           rowElement.append(cellElement);
           this.cells[i].push(cell);
           this.emptyCells.push(cell);
@@ -36,10 +39,6 @@
 
     Board.prototype.getElement = function() {
       return this.element;
-    };
-
-    Board.prototype.onCellClick = function() {
-      return this.board.selectCell(this);
     };
 
     Board.prototype.addNewCircles = function() {
@@ -155,12 +154,15 @@
     };
 
     Board.prototype.moveCell = function(movableCell, path) {
+      var _this = this;
       this.movableCell = movableCell;
       this.path = path;
       this.enabled = false;
       this.step = 0;
       this.emptyCells.push(this.movableCell);
-      return this.moveInterval = setInterval($.proxy(this.makeNextCellMove, this), 100);
+      return this.moveInterval = setInterval(function() {
+        return _this.makeNextCellMove();
+      }, 100);
     };
 
     Board.prototype.makeNextCellMove = function() {
@@ -259,33 +261,35 @@
     };
 
     Cell.prototype.show = function(color, animate) {
-      var onAnimationEnd;
+      var _this = this;
       this.color = color;
       if (animate == null) {
         animate = false;
       }
       this.image.addClass(this.color);
       if (animate) {
-        onAnimationEnd = function() {
-          return this.image.removeClass("circle-fade-in");
-        };
-        this.image.one("webkitAnimationEnd animationend", $.proxy(onAnimationEnd, this));
+        this.image.one("webkitAnimationEnd animationend", function() {
+          return _this.image.removeClass("circle-fade-in");
+        });
         return this.image.addClass("circle-fade-in");
       }
     };
 
     Cell.prototype.hide = function(animate) {
-      var onAnimationEnd;
+      var onAnimationEnd,
+        _this = this;
       if (animate == null) {
         animate = false;
       }
-      this.color = null;
       onAnimationEnd = function() {
-        return this.image.removeClass();
+        this.image.removeClass();
+        return this.color = null;
       };
       if (animate) {
-        this.image.one("webkitAnimationEnd animationend", $.proxy(onAnimationEnd, this));
-        return this.image.addClass("circle-fade-out");
+        this.image.addClass("circle-fade-out");
+        return this.image.one("webkitAnimationEnd animationend", function() {
+          return onAnimationEnd.apply(_this);
+        });
       } else {
         return onAnimationEnd.apply(this);
       }

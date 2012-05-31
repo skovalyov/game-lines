@@ -12,18 +12,18 @@ class Cell
 	show : (@color, animate = false) ->
 		@image.addClass @color
 		if animate
-			onAnimationEnd = () ->
+			@image.one "webkitAnimationEnd animationend", =>
 				@image.removeClass "circle-fade-in"
-			@image.one "webkitAnimationEnd animationend", $.proxy onAnimationEnd, this
 			@image.addClass "circle-fade-in"
 
 	hide : (animate = false) ->
-		@color = null
 		onAnimationEnd = () ->
 			@image.removeClass()
+			@color = null
 		if animate
-			@image.one "webkitAnimationEnd animationend", $.proxy onAnimationEnd, this
 			@image.addClass "circle-fade-out"
+			@image.one "webkitAnimationEnd animationend", () =>
+				onAnimationEnd.apply @
 		else
 			onAnimationEnd.apply @
 
