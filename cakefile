@@ -7,8 +7,8 @@ onExec = (error, stdout, stderr) ->
 
 task "buildStylus", "Build Stylus", () ->
 	console.log "Compiling Stylus..."
-	cp = exec "stylus.cmd ../stylus -o ../css", onExec
+	cp = exec "stylus stylus -o css", onExec
 
 task "buildCoffeeScript", "Build CoffeeScript", () ->
 	console.log "Compiling CoffeeScript..."
-	cp = exec "coffee.cmd -cj ../js/game.js ../coffee", onExec
+	cp = exec "coffee -cj js/game.js coffee", onExec
