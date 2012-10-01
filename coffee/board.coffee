@@ -86,7 +86,8 @@ class Board
         @selectedCell = null
     # If there is a circle in the clicked cell, select it.
     if cell.color
-      @selectedCell.deselect() if @selectedCell
+      if @selectedCell
+        @selectedCell.deselect()
       @selectedCell = cell
       @selectedCell.select()
       
