@@ -1,14 +1,18 @@
 {exec} = require 'child_process'
 
 onExec = (error, stdout, stderr) ->
-	console.log stdout if stdout?
-	console.log stderr if stderr?
-	console.log error if error?
+  console.log stdout if stdout?
+  console.log stderr if stderr?
+  console.log error if error?
+
+task "build", "Build All", () ->
+  invoke "buildStylus"
+  invoke "buildCoffeeScript"
 
 task "buildStylus", "Build Stylus", () ->
-	console.log "Compiling Stylus..."
-	cp = exec "stylus stylus -o css", onExec
+  console.log "Compiling Stylus..."
+  cp = exec "stylus -o css/ -w stylus/", onExec
 
 task "buildCoffeeScript", "Build CoffeeScript", () ->
-	console.log "Compiling CoffeeScript..."
-	cp = exec "coffee -cj js/game.js coffee", onExec
+  console.log "Compiling CoffeeScript..."
+  cp = exec "coffee -j js/game.js -cw coffee/", onExec
