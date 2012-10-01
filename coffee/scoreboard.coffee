@@ -1,7 +1,7 @@
 class Scoreboard
 
 	constructor : () ->
-		@element = $ "<p></p>"
+		@element = document.createElement "p"
 		@resetScore()
 
 	# Reference to the DOM element.
@@ -17,4 +17,6 @@ class Scoreboard
 		@updateScore()
 
 	updateScore : () ->
-		@element.text @score.toString()
+		if @element.firstChild
+			@element.removeChild @element.firstChild
+		@element.appendChild document.createTextNode @score.toString()
