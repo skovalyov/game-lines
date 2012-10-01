@@ -273,7 +273,7 @@
       }
       this.image.className += " " + this.color;
       onAnimationEnd = function(e) {
-        _this.image.className = _this.image.className.replace(/\bcircle-fade-inb/, "");
+        _this.image.className = _this.image.className.replace(/\bcircle-fade-in\b/, "");
         return _this.image.removeEventListener(e.type, onAnimationEnd);
       };
       if (animate) {
@@ -310,7 +310,7 @@
     };
 
     Cell.prototype.deselect = function() {
-      return this.image.className = this.image.className.replace(/\bcircle-jumpb/, "");
+      return this.image.className = this.image.className.replace(/\bcircle-jump\b/, "");
     };
 
     return Cell;

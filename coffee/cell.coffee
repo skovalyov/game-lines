@@ -12,7 +12,7 @@ class Cell
   show : (@color, animate = false) ->
     @image.className += (" " + @color)
     onAnimationEnd = (e) =>
-      @image.className = @image.className.replace /\bcircle-fade-inb/, ""
+      @image.className = @image.className.replace /\bcircle-fade-in\b/, ""
       @image.removeEventListener e.type, onAnimationEnd
     if animate
       @image.addEventListener "webkitAnimationEnd", onAnimationEnd
@@ -36,4 +36,4 @@ class Cell
     @image.className += " circle-jump"
     
   deselect : () ->
-    @image.className = @image.className.replace /\bcircle-jumpb/, ""
+    @image.className = @image.className.replace /\bcircle-jump\b/, ""
