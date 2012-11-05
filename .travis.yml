@@ -4,6 +4,8 @@ node_js:
 before_script:
   - cake build
 after_script:
+  - git config --global user.name "Travis"
+  - git config --global user.email skovalyov+travis@gmail.com
   - git stash
   - git checkout gh-pages
   - git read-tree master:public
