@@ -15,12 +15,13 @@ body {
   font-size: 24px;
 }
 #board {
-  margin: 0px 10px;
+  margin: 0px;
+  padding: 0px 10px;
   border-spacing: 0;
 }
 #board td {
-  width: 64px;
-  height: 64px;
+  width: 58px;
+  height: 58px;
   border: 1px outset #eee;
   background-color: #ccc;
 }
@@ -33,38 +34,34 @@ body {
   -moz-animation: circle-fade-out-keyframes 0.5s ease-out;
 }
 .circle-red {
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 5px;
   background-image: -webkit-radial-gradient(35% 35%, circle cover, #fff 5%, #f00 50%);
   background-image: -moz-radial-gradient(35% 35%, circle cover, #fff 5%, #f00 50%);
 }
 .circle-green {
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 5px;
   background-image: -webkit-radial-gradient(35% 35%, circle cover, #fff 5%, #008000 50%);
   background-image: -moz-radial-gradient(35% 35%, circle cover, #fff 5%, #008000 50%);
 }
 .circle-blue {
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 5px;
   background-image: -webkit-radial-gradient(35% 35%, circle cover, #fff 5%, #00f 50%);
   background-image: -moz-radial-gradient(35% 35%, circle cover, #fff 5%, #00f 50%);
 }
 .circle-yellow {
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 5px;
   background-image: -webkit-radial-gradient(35% 35%, circle cover, #fff 5%, #ff0 50%);
   background-image: -moz-radial-gradient(35% 35%, circle cover, #fff 5%, #ff0 50%);
 }
@@ -164,46 +161,46 @@ body {
 }
 @-moz-keyframes circle-jump-keyframes {
   0% {
-    margin-top: 0px;
+    margin-top: 5px;
   }
 
   100% {
-    margin-top: -10px;
+    margin-top: -5px;
   }
 }
 @-webkit-keyframes circle-jump-keyframes {
   0% {
-    margin-top: 0px;
+    margin-top: 5px;
   }
 
   100% {
-    margin-top: -10px;
+    margin-top: -5px;
   }
 }
 @-o-keyframes circle-jump-keyframes {
   0% {
-    margin-top: 0px;
+    margin-top: 5px;
   }
 
   100% {
-    margin-top: -10px;
+    margin-top: -5px;
   }
 }
 @-ms-keyframes circle-jump-keyframes {
   0% {
-    margin-top: 0px;
+    margin-top: 5px;
   }
 
   100% {
-    margin-top: -10px;
+    margin-top: -5px;
   }
 }
 @keyframes circle-jump-keyframes {
   0% {
-    margin-top: 0px;
+    margin-top: 5px;
   }
 
   100% {
-    margin-top: -10px;
+    margin-top: -5px;
   }
 }
