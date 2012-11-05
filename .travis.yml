@@ -3,6 +3,8 @@ node_js:
   - 0.8
 before_script:
   cake build
+after_script:
+  cake publishGitHubPages
 branches:
   only:
       - master

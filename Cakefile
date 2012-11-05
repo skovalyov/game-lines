@@ -28,3 +28,11 @@ task "buildStylus", "Build Stylus", () ->
 task "buildCoffeeScript", "Build CoffeeScript", () ->
   console.log "Building CoffeeScript..."
   cp = exec "coffee -j ./public/js/game.js -c ./src/coffee/", onExec
+
+task "publishGitHubPages", "Publish GitHub Pages", () ->
+  console.log "Publishing GitHub Pages..."
+  cp = exec "git checkout gh-pages", onExec
+  cp = exec "git read-tree master:public", onExec
+  cp = exec "git commit -m 'Publish GitHub pages'", onExec
+  cp = exec "git push origin gh-pages", onExec
+  cp = exec "git checkout master", onExec
