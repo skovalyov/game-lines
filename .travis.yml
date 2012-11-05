@@ -2,13 +2,13 @@ language: node_js
 node_js:
   - 0.8
 before_script:
-  cake build
+  - cake build
 after_script:
-  git checkout gh-pages
-  git read-tree master:public
-  git commit -m "Publish GitHub pages"
-  git push origin gh-pages
-  git checkout master
+  - git checkout gh-pages
+  - git read-tree master:public
+  - git commit -m "Publish GitHub pages"
+  - git push origin gh-pages
+  - git checkout master
 branches:
   only:
       - master
