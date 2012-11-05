@@ -4,11 +4,13 @@ node_js:
 before_script:
   - cake build
 after_script:
+  - git stash
   - git checkout gh-pages
   - git read-tree master:public
   - git commit -m "Publish GitHub pages"
   - git push origin gh-pages
   - git checkout master
+  - git stash pop
 branches:
   only:
       - master
