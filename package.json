@@ -1,0 +1,13 @@
+{
+  "name": "game-lines",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "3.0.1",
+    "coffee-script": "1.4.0",
+    "stylus": "0.30.1"
+  }
+}
