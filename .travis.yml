@@ -6,11 +6,12 @@ before_script:
 after_script:
   - git config --global user.name "Travis"
   - git config --global user.email skovalyov+travis@gmail.com
+  - git remote add github git@github.com:skovalyov/game-lines.git
   - git stash
   - git checkout gh-pages
   - git read-tree master:public
   - git commit -m "Publish GitHub pages"
-  - git push origin gh-pages
+  - git push github gh-pages
   - git checkout master
   - git stash pop
 branches:
